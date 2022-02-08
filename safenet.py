@@ -51,7 +51,7 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    def __init__(self, in_channels=256, classes):
+    def __init__(self, classes, in_channels=256):
         super(Decoder, self).__init__()
 
         self.conv1_s = nn.Conv2d(in_channels, 256, 3, 1, 1)

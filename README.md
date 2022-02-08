@@ -1,7 +1,7 @@
 # SAFENet-Pytorch
-## Pytorch implementation of SAFENet: Self-Supervised Monocular Depth Estimation with Semantic-Aware Feature Extraction: https://arxiv.org/abs/2010.02893
+## Pytorch implementation of SAFENet: Self-Supervised Monocular Depth Estimation with Semantic-Aware Feature Extraction
 
-<img src="./img/safenet.PNG" width="500px"></img>
+<img src="./safenet.PNG" width="500px"></img>
 
 ```python
 import torch

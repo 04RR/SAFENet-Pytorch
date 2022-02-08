@@ -51,7 +51,7 @@ class Encoder(nn.Module):
 
 
 class Decoder(nn.Module):
-    def __init__(self, in_channels=256):
+    def __init__(self, in_channels=256, classes):
         super(Decoder, self).__init__()
 
         self.conv1_s = nn.Conv2d(in_channels, 256, 3, 1, 1)
@@ -100,8 +100,8 @@ class Decoder(nn.Module):
         self.conv13_s = nn.Conv2d(32, 32, 3, 1, 1)
         self.conv13_d = nn.Conv2d(32, 32, 3, 1, 1)
 
-        self.conv14_s = nn.Conv2d(32, 1, 3, 1, 1)
-        self.conv14_d = nn.Conv2d(32, 19, 1, 1)
+        self.conv14_s = nn.Conv2d(32, classes, 3, 1, 1)
+        self.conv14_d = nn.Conv2d(32, 1, 1, 1)
 
     def forward(self, img_seg, img_depth, skip1, skip2, skip3):
         _, _, x, y = img_depth.shape
@@ -170,11 +170,11 @@ class Decoder(nn.Module):
 
 
 class SAFENet(nn.Module):
-    def __init__(self):
+    def __init__(self, in_channels, classes):
         super().__init__()
 
-        self.encoder = Encoder()
-        self.decoder = Decoder()
+        self.encoder = Encoder(in_channels)
+        self.decoder = Decoder(classes= classes)
 
     def forward(self, img):
 
